@@ -1,0 +1,22 @@
+.loginOtherWay p{
+    position: relative;
+    text-align: center;
+}
+.loginOtherWay p::after{
+    position: absolute;
+    content: ' ';
+    background-image: linear-gradient(90deg, black, white);
+    top: 50%;
+    right: 0;
+    height: 1px;
+    width: 32%;
+}
+.loginOtherWay p::before {
+    position: absolute;
+    content: ' ';
+    background-image: linear-gradient(90deg, white, black);
+    top: 50%;
+    left: 0;
+    height: 1px;
+    width: 32%;
+}

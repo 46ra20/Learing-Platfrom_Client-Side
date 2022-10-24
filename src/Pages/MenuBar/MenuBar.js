@@ -35,14 +35,14 @@ function MenuBar() {
                         navbarScroll
                     >
                         <Nav.Link><NavLink to='/courses' className='btn btn-primary'>Courses</NavLink></Nav.Link>
-                        <Nav.Link><NavLink to='/courses' className='btn btn-primary'>FAQ</NavLink></Nav.Link>
-                        <Nav.Link><NavLink to='/courses' className='btn btn-primary'>Blog</NavLink></Nav.Link>
+                        <Nav.Link><NavLink to='/fqa' className='btn btn-primary'>FAQ</NavLink></Nav.Link>
+                        <Nav.Link><NavLink to='/blog' className='btn btn-primary'>Blog</NavLink></Nav.Link>
                         <Nav.Link title='Night Mood On/Off'>
                             <NavLink className='text-white fs-3 btn-primary fw-bold'>
                                 <MdToggleOff></MdToggleOff>
                             </NavLink>
                         </Nav.Link>
-                        <Nav.Link><NavLink to='/courses' className='btn btn-primary'>LogIn</NavLink></Nav.Link>
+                        <Nav.Link><NavLink to='/login' className='btn btn-primary'>LogIn</NavLink></Nav.Link>
                         
                     </Nav>
                 </Navbar.Collapse>
