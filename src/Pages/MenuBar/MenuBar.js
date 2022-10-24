@@ -1,10 +1,11 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink } from 'react-router-dom';
 import logo from './../../assets/images/logo.png'
 import './MenuBar.css';
+import { MdToggleOff } from 'react-icons/md';
 
 function MenuBar() {
     return (
@@ -36,6 +37,11 @@ function MenuBar() {
                         <Nav.Link><NavLink to='/courses' className='btn btn-primary'>Courses</NavLink></Nav.Link>
                         <Nav.Link><NavLink to='/courses' className='btn btn-primary'>FAQ</NavLink></Nav.Link>
                         <Nav.Link><NavLink to='/courses' className='btn btn-primary'>Blog</NavLink></Nav.Link>
+                        <Nav.Link title='Night Mood On/Off'>
+                            <NavLink className='text-white fs-3 btn-primary fw-bold'>
+                                <MdToggleOff></MdToggleOff>
+                            </NavLink>
+                        </Nav.Link>
                         <Nav.Link><NavLink to='/courses' className='btn btn-primary'>LogIn</NavLink></Nav.Link>
                         
                     </Nav>
