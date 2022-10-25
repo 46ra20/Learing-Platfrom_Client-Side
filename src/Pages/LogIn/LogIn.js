@@ -28,6 +28,22 @@ function LogIn() {
         })
     }
 
+    const handleGoogleLogin =() =>{
+        logInWithGoogle()
+        .then(()=>{
+            navigate('/');
+        })
+        .catch(error => console.log(error))
+    }
+
+    const handleGitHubLogin =() =>{
+        logInWithGitHub()
+        .then(()=>{
+            navigate('/')
+        })
+        .catch(error=> console.log(error))
+    }
+
     console.log(error);
     return (
         <div className='d-grid col-sm-10 col-md-5 col-lg-3 mx-auto my-5 rounded border p-3 shadow'>
@@ -54,11 +70,11 @@ function LogIn() {
             </Form>
             <div className='loginOtherWay my-2'>
                 <p>Or LogIn with</p>
-                <Button variant="outline-primary" className='d-block w-100' onClick={() => logInWithGoogle()}>
+                <Button variant="outline-primary" className='d-block w-100' onClick={handleGoogleLogin}>
                     <FcGoogle className='me-2'></FcGoogle>
                     Google
                 </Button>
-                <Button variant="outline-primary" className='d-block w-100 mt-2' onClick={() => logInWithGitHub()}>
+                <Button variant="outline-primary" className='d-block w-100 mt-2' onClick={handleGitHubLogin}>
                     <AiFillGithub className='me-2'></AiFillGithub>
                     Git Hub
                 </Button>
