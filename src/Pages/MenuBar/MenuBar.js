@@ -9,6 +9,7 @@ import { MdToggleOff } from 'react-icons/md';
 import { useContext } from 'react';
 import { ContextProvider } from '../../UserContext/UserContext';
 import { NavDropdown } from 'react-bootstrap';
+import {BsPersonCircle} from 'react-icons/bs'
 
 function MenuBar() {
     const { userData, logOut } = useContext(ContextProvider);
@@ -59,7 +60,7 @@ function MenuBar() {
                                                     alt="React Bootstrap logo"
                                                     title={`${userData.displayName}`}
                                                 /> :
-                                                <NavLink to='/login' className='btn btn-primary ms-2' onClick={() => logOut()}>LogOut</NavLink>
+                                                <BsPersonCircle style={{fontSize:'20px'}} className='ms-2'></BsPersonCircle>
                                             }
                                         </>
                                         :

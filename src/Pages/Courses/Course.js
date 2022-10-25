@@ -1,10 +1,11 @@
 import { Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Course({data}) {
-    const { title, course_img, description} = data;
+    const { title, course_img, description, course_id} = data;
+    const navigate = useNavigate();
     return (
         <Col>
             <Card>
@@ -17,7 +18,7 @@ function Course({data}) {
                         }
                         ...<Link to='' className='text-decoration-none'>Read More</Link>
                     </Card.Text>
-                    <Button variant="primary">Course Details</Button>
+                    <Button variant="primary" onClick={() => navigate(`/course/details/${course_id}`)}>Course Details</Button>
                 </Card.Body>
             </Card>
         </Col>

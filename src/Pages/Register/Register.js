@@ -3,8 +3,6 @@ import Form from 'react-bootstrap/Form';
 import {  useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ContextProvider } from '../../UserContext/UserContext';
-import { FcGoogle } from 'react-icons/fc';
-import { AiFillGithub } from 'react-icons/ai';
 
 function Register() {
     const [accept, setAccept] = useState(false);
@@ -53,17 +51,6 @@ function Register() {
                     Sing Up
                 </Button>
             </Form>
-            <div className='loginOtherWay my-2'>
-                <p>Or Sing Up with</p>
-                <Button variant="outline-primary" className='d-block w-100'>
-                    <FcGoogle className='me-2'></FcGoogle>
-                    Google
-                </Button>
-                <Button variant="outline-primary" className='d-block w-100 mt-2'>
-                    <AiFillGithub className='me-2'></AiFillGithub>
-                    Git Hub
-                </Button>
-            </div>
         </div>
     );
 }

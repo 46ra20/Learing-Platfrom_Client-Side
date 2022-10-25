@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc'
 import { AiFillGithub } from 'react-icons/ai'
 import './LogIn.css';
@@ -12,6 +12,8 @@ function LogIn() {
 
     const [error, setError] = useState();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit =(event)=>{
         event.preventDefault();
@@ -20,7 +22,7 @@ function LogIn() {
         const password = form.password.value;
         logInWithEmailAndPassword(email, password)
         .then(()=>{
-            navigate('/');
+            navigate(from,{replace:from});
         })
         .catch(error => {
             console.log(error);
@@ -31,7 +33,7 @@ function LogIn() {
     const handleGoogleLogin =() =>{
         logInWithGoogle()
         .then(()=>{
-            navigate('/');
+            navigate(from, { replace: from });
         })
         .catch(error => console.log(error))
     }
@@ -39,12 +41,11 @@ function LogIn() {
     const handleGitHubLogin =() =>{
         logInWithGitHub()
         .then(()=>{
-            navigate('/')
+            navigate(from, { replace: from });
         })
         .catch(error=> console.log(error))
     }
 
-    console.log(error);
     return (
         <div className='d-grid col-sm-10 col-md-5 col-lg-3 mx-auto my-5 rounded border p-3 shadow'>
             <Form onSubmit={handleSubmit}>
