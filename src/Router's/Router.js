@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Courses from '../Pages/Courses/Courses';
-import LoadCourses from '../Pages/Courses/LoadCourses';
 import LayOut from '../Pages/LayOut/LayOut';
 import LogIn from '../Pages/LogIn/LogIn';
 import Register from '../Pages/Register/Register';
@@ -21,17 +20,17 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/',
-                loader: async () => fetch('http://localhost:5000/course/07'),
+                loader: async () => fetch('https://assignment-10-server-psi.vercel.app/course/07'),
                 element: <Courses></Courses>
             },
             {
                 path: '/course',
-                loader: async () => fetch('http://localhost:5000/course/07'),
+                loader: async () => fetch('https://assignment-10-server-psi.vercel.app/course/07'),
                 element: <Courses></Courses>
             },
             {
                 path: '/course/:Id',
-                loader: async ({params}) => fetch(`http://localhost:5000/course/${params.Id}`),
+                loader: async ({ params }) => fetch(`https://assignment-10-server-psi.vercel.app/course/${params.Id}`),
                 element: <Courses></Courses>
             }
         ]

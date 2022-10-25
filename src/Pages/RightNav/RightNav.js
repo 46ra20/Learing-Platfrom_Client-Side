@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Button, ListGroup} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ const RightNav = () => {
     const [menu, setMenu] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/category')
+        fetch('https://assignment-10-server-psi.vercel.app/category')
             .then(res => res.json())
             .then(data => setMenu(data))
     }, [])
@@ -15,6 +15,7 @@ const RightNav = () => {
     const navigate = useNavigate();
     return (
         <div>
+            <h4 className='border-bottom text-center mb-3'>All Category</h4>
             <ListGroup>
                 {
                     menu.map(category => 
