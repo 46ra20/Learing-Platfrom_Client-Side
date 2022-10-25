@@ -39,7 +39,7 @@ function MenuBar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <NavLink to='/courses' className='btn btn-primary'>Courses</NavLink>
+                        <NavLink to='/course' className='btn btn-primary'>Courses</NavLink>
                         <NavLink to='/fqa' className='btn btn-primary'>FAQ</NavLink>
                         <NavLink to='/blog' className='btn btn-primary'>Blog</NavLink>
                         <NavLink className='text-white fs-3 btn-primary fw-bold mt-2' title='Night Mood On/Off'>

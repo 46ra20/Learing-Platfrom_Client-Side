@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 function Course({data}) {
     const { title, course_img, description} = data;
-    console.log(data);
     return (
         <Col>
             <Card>
