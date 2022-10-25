@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc'
 import { AiFillGithub } from 'react-icons/ai'
 import './LogIn.css';
+import { ContextProvider } from '../../UserContext/UserContext';
 
 function LogIn() {
+    const { logInWithEmailAndPassword } = useContext(ContextProvider);
+    const [error, setError] = useState();
+    const navigate = useNavigate();
+
     const handleSubmit =(event)=>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        logInWithEmailAndPassword(email, password)
+        .then(()=>{
+            navigate('/');
+        })
+        .catch(error => {
+            setError(error);
+        })
     }
     return (
         <div className='d-grid col-sm-10 col-md-5 col-lg-3 mx-auto my-5 rounded border p-3 shadow'>
@@ -31,6 +42,7 @@ function LogIn() {
                     <Form.Text>
                         You have no account? Please <Link to='/register'> Create</Link> one.
                     </Form.Text>
+                    <Form.Text>{error}</Form.Text>
                 </Form.Group>
                 <Button variant="primary" type="submit" className='d-block w-100 mx-auto'>
                     LogIn
