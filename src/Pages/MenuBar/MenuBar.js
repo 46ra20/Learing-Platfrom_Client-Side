@@ -34,15 +34,13 @@ function MenuBar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link><NavLink to='/courses' className='btn btn-primary'>Courses</NavLink></Nav.Link>
-                        <Nav.Link><NavLink to='/fqa' className='btn btn-primary'>FAQ</NavLink></Nav.Link>
-                        <Nav.Link><NavLink to='/blog' className='btn btn-primary'>Blog</NavLink></Nav.Link>
-                        <Nav.Link title='Night Mood On/Off'>
-                            <NavLink className='text-white fs-3 btn-primary fw-bold'>
-                                <MdToggleOff></MdToggleOff>
-                            </NavLink>
-                        </Nav.Link>
-                        <Nav.Link><NavLink to='/login' className='btn btn-primary'>LogIn</NavLink></Nav.Link>
+                        <NavLink to='/courses' className='btn btn-primary'>Courses</NavLink>
+                        <NavLink to='/fqa' className='btn btn-primary'>FAQ</NavLink>
+                        <NavLink to='/blog' className='btn btn-primary'>Blog</NavLink>
+                        <NavLink className='text-white fs-3 btn-primary fw-bold' title='Night Mood On/Off'>
+                                <MdToggleOff className='d-block mx-auto'></MdToggleOff>
+                        </NavLink>
+                        <NavLink to='/login' className='btn btn-primary ms-2'>LogIn</NavLink>
                         
                     </Nav>
                 </Navbar.Collapse>

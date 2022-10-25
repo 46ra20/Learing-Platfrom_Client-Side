@@ -8,7 +8,8 @@ import './LogIn.css';
 import { ContextProvider } from '../../UserContext/UserContext';
 
 function LogIn() {
-    const { logInWithEmailAndPassword } = useContext(ContextProvider);
+    const { logInWithEmailAndPassword, logInWithGoogle, logInWithGitHub } = useContext(ContextProvider);
+
     const [error, setError] = useState();
     const navigate = useNavigate();
 
@@ -22,9 +23,12 @@ function LogIn() {
             navigate('/');
         })
         .catch(error => {
+            console.log(error);
             setError(error);
         })
     }
+
+    console.log(error);
     return (
         <div className='d-grid col-sm-10 col-md-5 col-lg-3 mx-auto my-5 rounded border p-3 shadow'>
             <Form onSubmit={handleSubmit}>
@@ -50,11 +54,11 @@ function LogIn() {
             </Form>
             <div className='loginOtherWay my-2'>
                 <p>Or LogIn with</p>
-                <Button variant="outline-primary" className='d-block w-100'>
+                <Button variant="outline-primary" className='d-block w-100' onClick={() => logInWithGoogle()}>
                     <FcGoogle className='me-2'></FcGoogle>
                     Google
                 </Button>
-                <Button variant="outline-primary" className='d-block w-100 mt-2'>
+                <Button variant="outline-primary" className='d-block w-100 mt-2' onClick={() => logInWithGitHub()}>
                     <AiFillGithub className='me-2'></AiFillGithub>
                     Git Hub
                 </Button>
