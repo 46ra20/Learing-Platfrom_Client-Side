@@ -48,12 +48,13 @@ function Register() {
                     <Form.Check type="checkbox" onClick={() => setAccept(!accept)} />
                     <Form.Label className='ms-2'>Accept <Link to=''>Tram and Condition</Link></Form.Label>
                 </Form.Group>
+                <Form.Text>Already have an account? Please <Link to='/login'>Log In</Link></Form.Text>
                 <Button variant="primary" type="submit" className='d-block w-100' disabled={!accept}>
                     Sing Up
                 </Button>
             </Form>
             <div className='loginOtherWay my-2'>
-                <p>Or LogIn with</p>
+                <p>Or Sing Up with</p>
                 <Button variant="outline-primary" className='d-block w-100'>
                     <FcGoogle className='me-2'></FcGoogle>
                     Google

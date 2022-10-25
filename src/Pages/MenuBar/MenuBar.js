@@ -6,8 +6,15 @@ import { NavLink } from 'react-router-dom';
 import logo from './../../assets/images/logo.png'
 import './MenuBar.css';
 import { MdToggleOff } from 'react-icons/md';
+import { useContext } from 'react';
+import { ContextProvider } from '../../UserContext/UserContext';
+import { NavDropdown } from 'react-bootstrap';
 
 function MenuBar() {
+    const { userData, logOut } = useContext(ContextProvider);
+
+    console.log(userData);
+
     return (
         <Navbar bg="primary" expand="lg">
             <Container>
@@ -37,10 +44,38 @@ function MenuBar() {
                         <NavLink to='/courses' className='btn btn-primary'>Courses</NavLink>
                         <NavLink to='/fqa' className='btn btn-primary'>FAQ</NavLink>
                         <NavLink to='/blog' className='btn btn-primary'>Blog</NavLink>
-                        <NavLink className='text-white fs-3 btn-primary fw-bold' title='Night Mood On/Off'>
+                        <NavLink className='text-white fs-3 btn-primary fw-bold mt-2' title='Night Mood On/Off'>
                                 <MdToggleOff className='d-block mx-auto'></MdToggleOff>
                         </NavLink>
-                        <NavLink to='/login' className='btn btn-primary ms-2'>LogIn</NavLink>
+                        {
+                            userData ? <NavDropdown title=
+                                {
+                                    userData ?
+                                        <>
+                                            {
+                                                userData.photoURL ? <img
+                                                    src={userData.photoURL}
+                                                    width="32"
+                                                    height="32"
+                                                    className="d-inline-block align-top rounded-circle ms-2"
+                                                    alt="React Bootstrap logo"
+                                                    title={`${userData.displayName}`}
+                                                /> :
+                                                <NavLink to='/login' className='btn btn-primary ms-2' onClick={() => logOut()}>LogOut</NavLink>
+                                            }
+                                        </>
+                                        :
+                                        <NavLink to='/login' className='btn btn-primary ms-2'>LogIn</NavLink>
+                                }
+                            >
+                                {
+                                    userData && <NavDropdown.Item className='btn-primary' onClick={() => logOut()}>Log Out</NavDropdown.Item>
+
+                                }
+                            </NavDropdown>
+                            :
+                                <NavLink to='/login' className='btn btn-primary ms-2'>LogIn</NavLink>
+                        }
                         
                     </Nav>
                 </Navbar.Collapse>
