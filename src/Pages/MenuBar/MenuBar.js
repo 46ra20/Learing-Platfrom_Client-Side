@@ -13,8 +13,6 @@ import { NavDropdown } from 'react-bootstrap';
 function MenuBar() {
     const { userData, logOut } = useContext(ContextProvider);
 
-    console.log(userData);
-
     return (
         <Navbar bg="primary" expand="lg">
             <Container>
@@ -55,8 +53,8 @@ function MenuBar() {
                                             {
                                                 userData.photoURL ? <img
                                                     src={userData.photoURL}
-                                                    width="32"
-                                                    height="32"
+                                                    width="24"
+                                                    height="24"
                                                     className="d-inline-block align-top rounded-circle ms-2"
                                                     alt="React Bootstrap logo"
                                                     title={`${userData.displayName}`}
