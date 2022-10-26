@@ -8,11 +8,13 @@ import CourseDetails from '../Pages/CourseDetails/CourseDetails';
 import PrivateRoute from '../Pages/PrivateRoute/PrivateRoute';
 import PremiumUser from '../Pages/PremiumUser/PremiumUser';
 import Blog from '../Pages/Blog/Blog';
+import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 
 export const router = createBrowserRouter([
     {
         path:'/',
         element:<LayOut></LayOut>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/login',

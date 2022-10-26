@@ -8,8 +8,8 @@ function Course({data}) {
     const navigate = useNavigate();
     return (
         <Col>
-            <Card>
-                <Card.Img variant="top" src={course_img} style={{ height: '180px' }} />
+            <Card className='shadow'>
+                <Card.Img variant="top" src={course_img} style={{ height: '200px' }} />
                 <Card.Body>
                     <Card.Title className='fw-semibold'>{title}</Card.Title>
                     <Card.Text>
