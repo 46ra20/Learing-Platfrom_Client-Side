@@ -7,7 +7,6 @@ import Register from '../Pages/Register/Register';
 import CourseDetails from '../Pages/CourseDetails/CourseDetails';
 import PrivateRoute from '../Pages/PrivateRoute/PrivateRoute';
 import PremiumUser from '../Pages/PremiumUser/PremiumUser';
-import PdfGenerate from '../Pages/PdfGenerate/PdfGenerate'
 
 export const router = createBrowserRouter([
     {
@@ -46,10 +45,6 @@ export const router = createBrowserRouter([
                 path: '/course/get-corse/:courseId',
                 loader: async ({ params }) => fetch(`https://assignment-10-server-46ra20.vercel.app/course/details/${params.courseId}`),
                 element: <PrivateRoute><PremiumUser></PremiumUser></PrivateRoute>
-            },
-            {
-                path:'/pdf',
-                element:<PdfGenerate></PdfGenerate>
             }
         ]
     }
