@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, ListGroup} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { ContextProvider } from '../../UserContext/UserContext';
 // import { useNavigate } from 'react-router-dom';
 
 const RightNav = () => {
@@ -11,6 +12,7 @@ const RightNav = () => {
             .then(res => res.json())
             .then(data => setMenu(data))
     }, [])
+    const {theme} = useContext(ContextProvider);
 
     const navigate = useNavigate();
     return (
@@ -19,8 +21,9 @@ const RightNav = () => {
             <ListGroup>
                 {
                     menu.map(category => 
-                        <Button variant="outline-primary" className='d-block w-100 mb-2'
+                        <Button variant={`${theme ?'outline-primary':'primary'}`} className='d-block w-100 mb-2'
                             onClick={() => navigate(`/course/${category.category_id}`)}
+                            key={category.category_id}
                             >
                                 {category.category_name}
                             </Button>

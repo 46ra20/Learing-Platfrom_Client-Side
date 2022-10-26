@@ -11,6 +11,7 @@ const UserContext = ({children}) => {
     const gitHubProvider = new GithubAuthProvider();
 
     const [userData, setUserData] = useState();
+    const [theme, setTheme] = useState(true);
 
     const createIdWithEmailAndPassword = (email, password) =>{
         return createUserWithEmailAndPassword(auth, email, password);
@@ -47,7 +48,9 @@ const UserContext = ({children}) => {
             logInWithGoogle,
             logInWithGitHub,
             logOut,
+            setTheme,
             userData,
+            theme
         }}>
             {
                 children

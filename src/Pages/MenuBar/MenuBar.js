@@ -5,17 +5,17 @@ import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
 import logo from './../../assets/images/logo.png'
 import './MenuBar.css';
-import { MdToggleOff } from 'react-icons/md';
+import { MdToggleOff, MdToggleOn } from 'react-icons/md';
 import { useContext } from 'react';
 import { ContextProvider } from '../../UserContext/UserContext';
 import { NavDropdown } from 'react-bootstrap';
 import {BsPersonCircle} from 'react-icons/bs'
 
 function MenuBar() {
-    const { userData, logOut } = useContext(ContextProvider);
+    const { userData, logOut, theme, setTheme } = useContext(ContextProvider);
 
     return (
-        <Navbar bg="primary" expand="lg">
+        <Navbar bg={`${theme?'primary':'dark'}`} expand="lg">
             <Container>
                 <Navbar.Brand className=' p-0 m-0'>
                          <div className='d-flex align-items-center'>
@@ -40,11 +40,14 @@ function MenuBar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <NavLink to='/course' className='btn btn-primary'>Courses</NavLink>
-                        <NavLink to='/fqa' className='btn btn-primary'>FAQ</NavLink>
-                        <NavLink to='/blog' className='btn btn-primary'>Blog</NavLink>
-                        <NavLink className='text-white fs-3 btn-primary fw-bold mt-2' title='Night Mood On/Off'>
-                                <MdToggleOff className='d-block mx-auto'></MdToggleOff>
+                        <NavLink to='/course' className='btn btn-primary me-2'>Courses</NavLink>
+                        <NavLink to='/fqa' className='btn btn-primary me-2'>FAQ</NavLink>
+                        <NavLink to='/blog' className='btn btn-primary me-2'>Blog</NavLink>
+                        <NavLink className='text-white fs-3 btn-primary fw-bold mt-2' title='Night Mood On/Off' onClick={()=> setTheme(!theme)}>
+                                {
+                                theme ? <MdToggleOff className='d-block mx-auto'></MdToggleOff>:
+                                    <MdToggleOn className='d-block mx-auto'></MdToggleOn>
+                                }
                         </NavLink>
                         {
                             userData ? <NavDropdown title=
@@ -56,11 +59,11 @@ function MenuBar() {
                                                     src={userData.photoURL}
                                                     width="24"
                                                     height="24"
-                                                    className="d-inline-block align-top rounded-circle ms-2"
+                                                    className="d-inline-block  align-top rounded-circle ms-2"
                                                     alt="React Bootstrap logo"
                                                     title={`${userData.displayName}`}
                                                 /> :
-                                                <BsPersonCircle style={{fontSize:'20px'}} className='ms-2'></BsPersonCircle>
+                                                <BsPersonCircle style={{ fontSize: '20px' }} className='ms-2' title={`${userData.displayName}`}></BsPersonCircle>
                                             }
                                         </>
                                         :
