@@ -21,3 +21,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 + Protect your data with private route
 + Login with email and password, google and github
 + Create user with email and password
+
+##### `This project theme designed with bootstrap primary colors`

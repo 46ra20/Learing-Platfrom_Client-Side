@@ -7,11 +7,13 @@ import { ContextProvider } from '../../UserContext/UserContext';
 const RightNav = () => {
     const [menu, setMenu] = useState([]);
 
+    //fetch category from server
     useEffect(() => {
         fetch('https://assignment-10-server-psi.vercel.app/category')
             .then(res => res.json())
             .then(data => setMenu(data))
     }, [])
+
     const {theme} = useContext(ContextProvider);
 
     const navigate = useNavigate();

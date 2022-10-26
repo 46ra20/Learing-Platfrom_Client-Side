@@ -23,11 +23,11 @@ function Register() {
         const password = form.password.value;
 
         createIdWithEmailAndPassword(email, password)
-        .then((result) => {
+        .then(() => {
             setShowError('');
             updateUserData(userName, photoURL)
             .then(()=>{})
-            .error((error) => { setShowError(error.message) })
+            .catch((error) => { setShowError(error.message) })
             navigate(from, { replace: from });
 
         })

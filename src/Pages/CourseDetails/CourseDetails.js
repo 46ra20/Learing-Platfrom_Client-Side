@@ -19,10 +19,10 @@ const CourseDetails = () => {
     };
 
     return (
-        <div className='d-md-flex container mx-auto my-4 position-relative shadow'>
+        <div className='d-md-flex container mx-auto my-4 position-relative'>
                 <div>
                 <div className="card mb-3">
-                    <div className="row g-0">
+                    <div className="row g-0 shadow">
                         <div className="col-12 col-md-5">
                             <img src={course_img} className="img-fluid rounded" alt="..." style={{height:'300px', width:'400px'}} />
                         </div>
