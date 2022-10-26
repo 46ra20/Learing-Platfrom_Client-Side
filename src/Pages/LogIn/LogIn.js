@@ -22,28 +22,30 @@ function LogIn() {
         const password = form.password.value;
         logInWithEmailAndPassword(email, password)
         .then(()=>{
+            setError('');
             navigate(from,{replace:from});
         })
         .catch(error => {
-            console.log(error);
-            setError(error);
+            setError(error.message);
         })
     }
 
     const handleGoogleLogin =() =>{
         logInWithGoogle()
         .then(()=>{
+            setError('');
             navigate(from, { replace: from });
         })
-        .catch(error => console.log(error))
+        .catch(error => setError(error.message))
     }
 
     const handleGitHubLogin =() =>{
         logInWithGitHub()
         .then(()=>{
+            setError('');
             navigate(from, { replace: from });
         })
-        .catch(error=> console.log(error))
+        .catch(error => setError(error.message))
     }
 
     return (
@@ -61,9 +63,9 @@ function LogIn() {
                         <p style={{ fontSize: '11px' }}>We'll never share your email and password with anyone else.</p>
                     </Form.Text>
                     <Form.Text>
-                        You have no account? Please <Link to='/register'> Create</Link> one.
-                    </Form.Text>
-                    <Form.Text>{error}</Form.Text>
+                        You have no account? Please <Link to='/register'>Create one.</Link>
+                    </Form.Text><br/>
+                    <Form.Text className='text-danger'>{error}</Form.Text>
                 </Form.Group>
                 <Button variant="primary" type="submit" className='d-block w-100 mx-auto'>
                     LogIn

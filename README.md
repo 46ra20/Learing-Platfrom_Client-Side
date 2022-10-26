@@ -4,7 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
++ react-router
++ react-bootstrap
++ react-to-pdf
 
 ### `npm start`
 

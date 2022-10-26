@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import { ContextProvider } from '../../UserContext/UserContext';
 import { NavDropdown } from 'react-bootstrap';
 import {BsPersonCircle} from 'react-icons/bs'
+import ReactTooltip from 'react-tooltip';
 
 function MenuBar() {
     const { userData, logOut, theme, setTheme } = useContext(ContextProvider);
@@ -43,7 +44,7 @@ function MenuBar() {
                         <NavLink to='/course' className='btn btn-primary me-2'>Courses</NavLink>
                         <NavLink to='/fqa' className='btn btn-primary me-2'>FAQ</NavLink>
                         <NavLink to='/blog' className='btn btn-primary me-2'>Blog</NavLink>
-                        <NavLink className='text-white fs-3 btn-primary fw-bold mt-2' title='Night Mood On/Off' onClick={()=> setTheme(!theme)}>
+                        <NavLink className='text-white fs-3 btn-primary fw-bold mt-2' data-tip='Night Mood On/Off' onClick={()=> setTheme(!theme)}>
                                 {
                                 theme ? <MdToggleOff className='d-block mx-auto'></MdToggleOff>:
                                     <MdToggleOn className='d-block mx-auto'></MdToggleOn>
@@ -63,7 +64,7 @@ function MenuBar() {
                                                     alt="React Bootstrap logo"
                                                     title={`${userData.displayName}`}
                                                 /> :
-                                                <BsPersonCircle style={{ fontSize: '20px' }} className='ms-2' title={`${userData.displayName}`}></BsPersonCircle>
+                                                <BsPersonCircle style={{ fontSize: '20px' }} className={`${theme?'':'bg-white'} ms-2 rounded-circle`} title={`${userData.displayName}`}></BsPersonCircle>
                                             }
                                         </>
                                         :
@@ -82,6 +83,7 @@ function MenuBar() {
                     </Nav>
                 </Navbar.Collapse>
             </Container>
+            <ReactTooltip/>
         </Navbar>
     );
 }

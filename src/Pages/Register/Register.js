@@ -1,13 +1,18 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {  useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ContextProvider } from '../../UserContext/UserContext';
 
 function Register() {
     const [accept, setAccept] = useState(false);
+    const [showError, setShowError] =useState(null);
 
-    const { createIdWithEmailAndPassword } = useContext(ContextProvider);
+    const { createIdWithEmailAndPassword, updateUserData } = useContext(ContextProvider);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,10 +21,20 @@ function Register() {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(userName, photoURL, email, password);
+
         createIdWithEmailAndPassword(email, password)
-        .then(result => console.log(result))
-        .catch(error => console.log(error.massage))
+        .then((result) => {
+            setShowError('');
+            updateUserData(userName, photoURL)
+            .then(()=>{})
+            .error((error) => { setShowError(error.message) })
+            navigate(from, { replace: from });
+
+        })
+        .catch((error) => 
+            {
+                setShowError(error.message)
+            })
     }
 
     return (
@@ -46,7 +61,8 @@ function Register() {
                     <Form.Check type="checkbox" onClick={() => setAccept(!accept)} />
                     <Form.Label className='ms-2'>Accept <Link to=''>Tram and Condition</Link></Form.Label>
                 </Form.Group>
-                <Form.Text>Already have an account? Please <Link to='/login'>Log In</Link></Form.Text>
+                <Form.Text>Already have an account? Please <Link to='/login'>Log In</Link></Form.Text><br/>
+                <Form.Text className='text-danger'>{showError}</Form.Text>
                 <Button variant="primary" type="submit" className='d-block w-100' disabled={!accept}>
                     Sing Up
                 </Button>

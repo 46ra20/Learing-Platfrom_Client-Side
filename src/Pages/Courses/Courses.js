@@ -12,7 +12,7 @@ const Courses = () => {
         course = 
         <Row xs={1} md={3} lg={3} className='g-4'>
             {
-                getData.map(course => <Course data={course}></Course>)
+                getData.map(course => <Course data={course} key={course.course_id}></Course>)
             }
         </Row>
     }
