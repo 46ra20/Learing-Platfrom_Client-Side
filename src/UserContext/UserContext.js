@@ -13,35 +13,43 @@ const UserContext = ({children}) => {
 
     const [userData, setUserData] = useState();
     const [theme, setTheme] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     const createIdWithEmailAndPassword = (email, password) =>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const logInWithGoogle = () =>{
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
     const logInWithEmailAndPassword = (email, password) =>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const logInWithGitHub = () =>{
+        setLoading(true);
         return signInWithPopup(auth, gitHubProvider);
     }
 
     const logOut = () =>{
+        setLoading(true);
         return signOut(auth);
     }
 
     //update user data
     const updateUserData = (userName, photoUrl) =>{
+        setLoading(true);
         return updateProfile(auth.currentUser, {displayName:userName, photoURL:photoUrl});
     } 
 
     useEffect(()=>{
         const unsubscribe = () => onAuthStateChanged(auth, currentUser=>{
-            setUserData(currentUser)
+            setUserData(currentUser);
+            setLoading(false);
         })
         return unsubscribe();
     },[])
@@ -56,6 +64,7 @@ const UserContext = ({children}) => {
             logOut,
             updateUserData,
             setTheme,
+            loading,
             userData,
             theme
         }}>

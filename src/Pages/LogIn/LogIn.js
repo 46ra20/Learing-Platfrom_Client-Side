@@ -23,7 +23,7 @@ function LogIn() {
         logInWithEmailAndPassword(email, password)
         .then(()=>{
             setError('');
-            navigate(from,{replace:from});
+            navigate(from,{replace:true});
         })
         .catch(error => {
             setError(error.message);
@@ -34,7 +34,7 @@ function LogIn() {
         logInWithGoogle()
         .then(()=>{
             setError('');
-            navigate(from, { replace: from });
+            navigate(from, { replace: true });
         })
         .catch(error => setError(error.message))
     }
@@ -43,7 +43,7 @@ function LogIn() {
         logInWithGitHub()
         .then(()=>{
             setError('');
-            navigate(from, { replace: from });
+            navigate(from, { replace: true });
         })
         .catch(error => setError(error.message))
     }
