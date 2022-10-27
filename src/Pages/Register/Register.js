@@ -59,7 +59,7 @@ function Register() {
                 </Form.Group>
                 <Form.Group className="mb-3 d-flex">
                     <Form.Check type="checkbox" onClick={() => setAccept(!accept)} />
-                    <Form.Label className='ms-2'>Accept <Link to=''>Tram and Condition</Link></Form.Label>
+                    <Form.Label className='ms-2'>Accept <Link to=''>Terms and Conditions</Link></Form.Label>
                 </Form.Group>
                 <Form.Text>Already have an account? Please <Link to='/login'>Log In</Link></Form.Text><br/>
                 <Form.Text className='text-danger'>{showError}</Form.Text>
