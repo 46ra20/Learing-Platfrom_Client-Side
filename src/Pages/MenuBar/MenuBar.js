@@ -68,7 +68,10 @@ function MenuBar() {
                                             }
                                         </>
                                         :
+                                        <>
                                         <NavLink to='/login' className='btn btn-primary ms-2'>LogIn</NavLink>
+                                        <NavLink to='/register' className='btn btn-primary ms-2'>Register</NavLink>
+                                        </>
                                 }
                             >
                                 {
@@ -77,7 +80,10 @@ function MenuBar() {
                                 }
                             </NavDropdown>
                             :
-                                <NavLink to='/login' className='btn btn-primary ms-2'>LogIn</NavLink>
+                                <>
+                                    <NavLink to='/login' className='btn btn-primary ms-2'>LogIn</NavLink>
+                                    <NavLink to='/register' className='btn btn-primary ms-2'>Register</NavLink>
+                                </>
                         }
                         
                     </Nav>
